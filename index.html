@@ -21,6 +21,10 @@
       cursor: pointer;
       border-radius: 4px;
     }
+    /* Hide the input field */
+    #myInput {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -52,10 +56,6 @@
     document.execCommand("copy");
 
     const clipboardContents = textToCopy.value;
-
-
-    /* Alert the copied text */
-    alert("Copied the text: " + copyText.value);
   }
 </script>
 
