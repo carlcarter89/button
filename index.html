@@ -1,57 +1,46 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Copy Text to Clipboard</title>
-    <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self' *">
-    <!-- Include Font Awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        /* Style the button */
-      .copy-button {
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 4px;
-      }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Copy Button</title>
+  <style>
+    /* Style the button */
+    .copy-button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+  </style>
 </head>
 <body>
-    <input type="text" id="textToCopy" value="" style="position: absolute; left: -9999px;">
 
-    <button id="copyButton" onclick="copyToClipboard()"></button>
-    <button class="copyButton" onclick="copyToClipboard()">
-      <img src="https://img.icons8.com/pastel-glyph/2x/copy.png" alt="Copy Icon" style="width: 18px; height: 18px; vertical-align: middle;">
-    </button>
+<!-- Create a copy button with the provided copy icon -->
+<button class="copy-button" onclick="copyToClipboard()">
+  <img src="https://img.icons8.com/pastel-glyph/2x/copy.png" alt="Copy Icon" style="width: 18px; height: 18px; vertical-align: middle;">
+  Copy Text
+</button>
 
-    <script>
-        function getQueryParam(name) {
-            const urlSearchParams = new URLSearchParams(window.location.search);
-            return urlSearchParams.get(name);
-        }
+<script>
+  function copyToClipboard() {
+    const textToCopy = "Text to be copied"; // Replace this with the text you want to copy
+    navigator.clipboard.writeText(textToCopy)
+      .then(() => {
+        alert("Copied the text: " + textToCopy);
+      })
+      .catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+  }
+</script>
 
-        const textToCopy = document.getElementById("textToCopy");
-        const copyText = getQueryParam("copy");
-        if (copyText) {
-            textToCopy.value = decodeURIComponent(copyText);
-        }
-
-        const copyButton = document.getElementById("copyButton");
-        copyButton.title = "Copy";
-
-        function copyToClipboard() {
-            textToCopy.select();
-            document.execCommand("copy");
-
-            const clipboardContents = textToCopy.value;
-        }
-    </script>
-    <!-- Include Font Awesome JS -->
 </body>
 </html>
