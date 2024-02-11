@@ -38,8 +38,8 @@
 
 <script>
   function copyToClipboard() {
-    const textToCopy = document.getElementById("textToCopy").value;
-    navigator.clipboard.writeText(textToCopy)
+      const textToCopy = document.getElementById("textToCopy");
+      navigator.clipboard.writeText(textToCopy)
       .then(() => {
         alert("Copied the text: " + textToCopy);
       })
