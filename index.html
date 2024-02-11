@@ -56,12 +56,7 @@
       document.execCommand("copy");
 
       const clipboardContents = textToCopy.value;
-
-      copyButton.textContent = "✔";
-      setTimeout(function () {
-          copyButton.textContent = "📋";
-          copyButton.title = textToCopy.value;
-      }, 1000);
+      copyButton.title = textToCopy.value;
   }
 </script>
 
