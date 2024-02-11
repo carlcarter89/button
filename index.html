@@ -38,12 +38,14 @@
 
 <script>
   function copyToClipboard() {
-      const textToCopy = document.getElementById("textToCopy");
-      textToCopy.select();
-      document.execCommand("copy");
-
-      const clipboardContents = textToCopy.value;
-      alert("Copied the text: " + clipboardContents);
+    const textToCopy = document.getElementById("textToCopy").value;
+    navigator.clipboard.writeText(textToCopy)
+      .then(() => {
+        alert("Copied the text: " + textToCopy);
+      })
+      .catch(err => {
+        console.error('Failed to copy: ', err);
+      });
   }
 </script>
 
