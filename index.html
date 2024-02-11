@@ -22,7 +22,7 @@
       border-radius: 4px;
     }
     /* Hide the input field */
-    #myInput {
+    #textToCopy {
       display: none;
     }
   </style>
@@ -30,32 +30,38 @@
 <body>
 
 <!-- Create an input field and a copy button -->
-<input type="text" value="" id="myInput">
-<button class="copy-button" id="copyButton" onclick="copyToClipboard()">
+<input type="text" value="" id="textToCopy">
+<button id="copyButton" onclick="copyToClipboard()">
   <!-- Add Font Awesome copy icon -->
   <i class="far fa-copy" style="font-size:18px"></i>
 </button>
 
 <script>
   function getQueryParam(name) {
-    const urlSearchParams = new URLSearchParams(window.location.search);
-    return urlSearchParams.get(name);
+      const urlSearchParams = new URLSearchParams(window.location.search);
+      return urlSearchParams.get(name);
   }
 
-  const textToCopy = document.getElementById("myInput");
+  const textToCopy = document.getElementById("textToCopy");
   const copyText = getQueryParam("copy");
   if (copyText) {
-    textToCopy.value = decodeURIComponent(copyText);
+      textToCopy.value = decodeURIComponent(copyText);
   }
 
   const copyButton = document.getElementById("copyButton");
   copyButton.title = textToCopy.value;
 
   function copyToClipboard() {
-    textToCopy.select();
-    document.execCommand("copy");
+      textToCopy.select();
+      document.execCommand("copy");
 
-    const clipboardContents = textToCopy.value;
+      const clipboardContents = textToCopy.value;
+
+      copyButton.textContent = "✔";
+      setTimeout(function () {
+          copyButton.textContent = "📋";
+          copyButton.title = textToCopy.value;
+      }, 1000);
   }
 </script>
 
