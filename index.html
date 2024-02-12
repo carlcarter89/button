@@ -40,6 +40,7 @@
   function copyToClipboard() {
     const urlParams = new URLSearchParams(window.location.search);
     const paramsString = urlParams.toString();
+    alert("paramsString: " + paramsString)
     
     if (paramsString) {
       // Extract the text after "?" in the URL
