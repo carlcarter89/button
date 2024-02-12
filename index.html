@@ -37,17 +37,19 @@
 <script>
   function copyToClipboard() {
     const urlParams = new URLSearchParams(window.location.search);
-    const paramsString = urlParams.toString();
+    const paramsString = urlParams.get("copy");
     
     if (paramsString) {
-      // Extract the text after "=" in the URL
-      const textToCopy = paramsString.split("=")[0];
+      const textToCopy = decodeURIComponent(paramsString);
+      
+      // Encode the text before copying it to the clipboard
+      const encodedText = encodeURIComponent(textToCopy);
       
       // Use the Clipboard API to copy the text to the clipboard
-      navigator.clipboard.writeText(textToCopy)
+      navigator.clipboard.writeText(encodedText)
         .then(() => {
           // Alert message indicating the copied text
-          alert("Copied the following text: " + textToCopy);
+          alert("Copied the text: " + textToCopy);
         })
         .catch(err => {
           console.error('Failed to copy text: ', err);
