@@ -12,11 +12,11 @@
       background-color: #4CAF50;
       color: white;
       border: none;
-      padding: 10px 20px;
+      padding: 10px 10px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
-      font-size: 16px;
+      font-size: 14px;
       margin: 4px 2px;
       cursor: pointer;
       border-radius: 4px;
@@ -31,7 +31,7 @@
 
 <button class="copy-button" onclick="copyToClipboard()">
   <!-- Add Font Awesome copy icon -->
-  <i class="far fa-copy" style="font-size:18px"></i>
+  <i class="far fa-copy" style="font-size:14px"></i>
 </button>
 
 <script>
@@ -44,10 +44,7 @@
       
       // Use the Clipboard API to copy the text to the clipboard
       navigator.clipboard.writeText(textToCopy)
-        .then(() => {
-          // Alert message indicating the copied text
-          alert("Copied the text: " + textToCopy);
-        })
+        .then(() => {})
         .catch(err => {
           console.error('Failed to copy text: ', err);
           alert("Failed to copy text. Please try again.");
