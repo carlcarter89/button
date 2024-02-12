@@ -42,11 +42,8 @@
     if (paramsString) {
       const textToCopy = decodeURIComponent(paramsString);
       
-      // Encode the text before copying it to the clipboard
-      const encodedText = encodeURIComponent(textToCopy);
-      
       // Use the Clipboard API to copy the text to the clipboard
-      navigator.clipboard.writeText(encodedText)
+      navigator.clipboard.writeText(textToCopy)
         .then(() => {
           // Alert message indicating the copied text
           alert("Copied the text: " + textToCopy);
