@@ -40,11 +40,10 @@
   function copyToClipboard() {
     const urlParams = new URLSearchParams(window.location.search);
     const paramsString = urlParams.toString();
-    alert("paramsString: " + paramsString)
     
     if (paramsString) {
-      // Extract the text after "?" in the URL
-      const textToCopy = paramsString.split("?")[1];
+      // Extract the text after "=" in the URL
+      const textToCopy = paramsString.split("=")[0];
       
       const inputField = document.getElementById("textToCopy");
       inputField.value = textToCopy;
