@@ -29,8 +29,6 @@
 </head>
 <body>
 
-<!-- Create an input field and a copy button -->
-<input type="text" value="" id="textToCopy">
 <button class="copy-button" onclick="copyToClipboard()">
   <!-- Add Font Awesome copy icon -->
   <i class="far fa-copy" style="font-size:18px"></i>
@@ -45,10 +43,17 @@
       // Extract the text after "=" in the URL
       const textToCopy = paramsString.split("=")[0];
       
-      const inputField = document.getElementById("textToCopy");
-      inputField.value = textToCopy;
-      inputField.select();
-      document.execCommand("copy");
+      // Create a temporary textarea element
+      const textarea = document.createElement('textarea');
+      textarea.value = textToCopy;
+      document.body.appendChild(textarea);
+
+      // Select the text in the textarea and copy it to the clipboard
+      textarea.select();
+      document.execCommand('copy');
+
+      // Remove the textarea from the DOM
+      document.body.removeChild(textarea);
 
       // Alert message indicating the copied text
       alert("Copied the text: " + textToCopy);
