@@ -12,15 +12,16 @@
       background-color: #4CAF50;
       color: white;
       border: none;
-      padding: none;
+      padding: 10px 20px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
       font-size: 16px;
-      margin: none;
+      margin: 4px 2px;
       cursor: pointer;
-      border-radius: none;
+      border-radius: 4px;
     }
+    /* Hide the input field */
     #textToCopy {
       display: none;
     }
@@ -29,32 +30,24 @@
 <body>
 
 <!-- Create an input field and a copy button -->
-<input type="text" value="Text to be copied" id="textToCopy">
-<button class="copyButton" onclick="copyToClipboard()">
+<input type="text" value="" id="textToCopy">
+<button class="copy-button" onclick="copyToClipboard()">
   <!-- Add Font Awesome copy icon -->
-  <i class="far fa-copy"></i> Copy Question
+  <i class="far fa-copy" style="font-size:18px"></i>
 </button>
 
 <script>
-  function getQueryParam(name) {
-      const urlSearchParams = new URLSearchParams(window.location.search);
-      return urlSearchParams.get(name);
-  }
-
-  const textToCopy = document.getElementById("textToCopy");
-  const copyText = getQueryParam("copy");
-  if (copyText) {
-      textToCopy.value = decodeURIComponent(copyText);
-  }
-
-  const copyButton = document.getElementById("copyButton");
-  copyButton.title = "Copy";
-
   function copyToClipboard() {
-      textToCopy.select();
-      document.execCommand("copy");
+    const urlParams = new URLSearchParams(window.location.search);
+    const textToCopy = urlParams.toString().split("?")[1];
+    
+    const inputField = document.getElementById("textToCopy");
+    inputField.value = textToCopy;
+    inputField.select();
+    document.execCommand("copy");
 
-      const clipboardContents = textToCopy.value;
+    // Alert message indicating the copied text
+    alert("Copied the text: " + textToCopy);
   }
 </script>
 
