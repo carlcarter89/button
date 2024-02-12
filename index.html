@@ -39,15 +39,22 @@
 <script>
   function copyToClipboard() {
     const urlParams = new URLSearchParams(window.location.search);
-    const textToCopy = urlParams.toString().split("?")[1];
+    const paramsString = urlParams.toString();
     
-    const inputField = document.getElementById("textToCopy");
-    inputField.value = textToCopy;
-    inputField.select();
-    document.execCommand("copy");
+    if (paramsString) {
+      // Extract the text after "?" in the URL
+      const textToCopy = paramsString.split("?")[1];
+      
+      const inputField = document.getElementById("textToCopy");
+      inputField.value = textToCopy;
+      inputField.select();
+      document.execCommand("copy");
 
-    // Alert message indicating the copied text
-    alert("Copied the text: " + textToCopy);
+      // Alert message indicating the copied text
+      alert("Copied the text: " + textToCopy);
+    } else {
+      alert("No text found in the URL parameters.");
+    }
   }
 </script>
 
