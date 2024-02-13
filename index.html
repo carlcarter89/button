@@ -7,28 +7,25 @@
   <!-- Include Font Awesome CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
-    /* Style the button container */
-    .copy-button-container {
-      display: inline-block;
+    /* Reset padding and margin for the button */
+    button {
+      padding: 0;
+      margin: 0;
     }
-
     /* Style the button */
     .copy-button {
       background-color: #4CAF50;
       color: white;
-      padding: 5px 10px;
+      border: none;
+      padding: 5px 5px;
       text-align: center;
       text-decoration: none;
+      display: inline-block;
       font-size: 14px;
+      margin: 0;
       cursor: pointer;
       border-radius: 4px;
     }
-
-    /* Style the button icon */
-    .button-icon {
-      margin-right: 5px;
-    }
-
     /* Hide the input field */
     #textToCopy {
       display: none;
@@ -37,14 +34,10 @@
 </head>
 <body>
 
-<!-- Copy button container -->
-<div class="copy-button-container">
-  <!-- Copy button -->
-  <div class="copy-button" onclick="copyToClipboard()">
-    <!-- Add Font Awesome copy icon -->
-    <i class="far fa-copy button-icon"></i> Copy Question
-  </div>
-</div>
+<button class="copy-button" onclick="copyToClipboard()">
+  <!-- Add Font Awesome copy icon -->
+  <i class="far fa-copy" style="font-size:14px"></i> Copy Question
+</button>
 
 <script>
   function copyToClipboard() {
